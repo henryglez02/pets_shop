@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Angel Pets</title>
+  </head>
+  <body class="">
+    <header class="flex justify-between p-3">
+      Angel Pets
+      <nav>
+        <ul class="flex max-w-sm gap-2">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'tabla' %}">Inventario</a></li>
+          <li><a href="">Acerca de</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex m-2 min-h-screen justify-center">
+      {% block main-section %}
+      <div class="flex flex-col sm:flex-row flex items-center text-center">
+        <div>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <button>Leer mas</button>
+        </div>
+        <img
+          class="object-none"
+          src="https://media.istockphoto.com/id/1296353202/es/foto/grupo-de-mascotas-posando-alrededor-de-un-collie-fronterizo-perro-gato-hur%C3%B3n-conejo-p%C3%A1jaro-pez.jpg?s=612x612&w=0&k=20&c=L2IMPfImJLLGeXTYUIpoFJ9JrnOjHvxgzr-sYbtAZaQ="
+          alt=""
+        />
+      </div>
+
+      {% endblock main-section %}
+    </main>
+  </body>
+</html>
