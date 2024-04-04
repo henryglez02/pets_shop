@@ -1,0 +1,12 @@
+{% extends "home.html" %} {% block main-section %}
+
+<h1 class="text-xl">Editar Producto</h1>
+<form method="POST">
+  {% csrf_token %} {{form}}
+
+  <button class="py-1 px-4 rounded-md bg-slate-200 outline outline-1">
+    <strong>Confirmar</strong>
+  </button>
+</form>
+
+{% endblock main-section %}

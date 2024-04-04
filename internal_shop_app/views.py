@@ -40,4 +40,28 @@ def modificar_producto_view(request, id_prod):
 
 
 def eliminar_producto_view(request, id_prod):
-    return render(request, "eliminar.html", {"id": id_prod})
+    producto = Producto.objects.get(pk=id_prod)
+    producto.delete()
+    return render(request, "eliminar.html")
+
+
+def editar_producto_view(request, id_prod):
+
+    if request.method == "GET":
+        template = "editar_producto.html"
+        context = {"form": CrearProducto()}
+        return render(request, template, context)
+
+    else:
+        nombre = request.POST["nombre"]
+        precio = request.POST["precio"]
+        reserva = request.POST["reserva"]
+        categoria = request.POST["categoria"]
+
+        producto = Producto.objects.get(pk=id_prod)
+        producto.nombre = nombre
+        producto.precio = precio
+        producto.reserva = reserva
+        producto.categoria = categoria
+        producto.save()
+        return redirect("tabla")
