@@ -9,7 +9,7 @@
 
     <title>Angel Pets</title>
   </head>
-  <body class="">
+  <body class="min-h-screen">
     <header class="flex flex-col items-center justify-center p-3 shadow-sm sm:shadow-2xl">
       <img
           class="sm:w-32 sm:h-32 w-24 h-24 rounded-full object-cover shadow-xl flex py-3"
@@ -20,21 +20,21 @@
         <hr class="bg-red-700 my-3">
         <ul class="flex max-w-sm gap-4 justify-center text-xl text-red-800 font-semibold">
           <li class="hover:text-red-600"><a href="{% url 'home' %}">Home</a></li>
-          <li class="hover:text-red-600"><a href="{% url 'tabla' %}">Inventario</a></li>
+          <li class="hover:text-red-600"><a href="{% url 'tabla' %}">Productos</a></li>
           <li class="hover:text-red-600"><a href="">Ventas</a></li>
         </ul>
       </nav>
     </header>
-    <main class="flex m-1 min-h-screen justify-center">
+    <main class="flex m-1 items-center justify-center">
       {% block main-section %}
-      <div class="flex flex-col sm:flex-row flex items-center text-center gap-8 py-10 sm:flex-row-reverse">
+      <div class="flex flex-col items-center text-center gap-8 pt-20 md:flex-row-reverse sm:gap-0">
         <img
           class=""
           src="{% static 'images/home (2).jpg' %}"
           alt=""
         />
-        <div class="max-w-xs sm:max-w-sm md:max-w-screen-md">
-          <p class="text-xl text-red-700 font-sans font-bold">Bienvenido al Inventario de nuestra empresa!</p>
+        <div class="max-w-xs sm:max-w-sm md:max-w-screen-md md:pl-8">
+          <p class="text-xl text-red-700 font-sans font-bold ">Bienvenido al Inventario de nuestra empresa!</p>
           <button class="rounded-xl font-mono bg-red-700 text-white px-3 py-1 my-4">Manual aqui</button>
         </div>
       </div>
