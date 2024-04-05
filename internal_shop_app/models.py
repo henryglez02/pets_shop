@@ -11,3 +11,13 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+
+class Venta(models.Model):
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(max_length=50)
+    fecha = models.DateField(auto_now_add=True)
+    hora = models.TimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.id_producto} - {self.cantidad}"

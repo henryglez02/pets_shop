@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
 from internal_shop_app.forms import CrearProducto
-from internal_shop_app.models import Producto
+from internal_shop_app.models import Producto, Venta
 
 # Create your views here.
 
@@ -21,7 +21,7 @@ def agregar_producto_view(request):
 
         producto = Producto.objects.create(
             nombre=nombre, precio=precio, reserva=reserva, categoria=categoria)
-        return redirect("/angelpets/tabla")
+        return redirect("tabla")
 
 
 def home_view(request):
@@ -32,11 +32,8 @@ def home_view(request):
 def tabla_view(request):
     template = "mostrar_tabla.html"
     productos = Producto.objects.all()
-    return render(request, template, {"productos": productos})
-
-
-def modificar_producto_view(request, id_prod):
-    return render(request, "edit.html", {"id": id_prod})
+    tipo = list(productos)
+    return render(request, template, {"productos": productos, "tipo": tipo})
 
 
 def eliminar_producto_view(request, id_prod):
@@ -49,7 +46,9 @@ def editar_producto_view(request, id_prod):
 
     if request.method == "GET":
         template = "editar_producto.html"
-        context = {"form": CrearProducto()}
+        producto = Producto.objects.get(pk=id_prod)
+
+        context = {"form": CrearProducto(), "producto": producto}
         return render(request, template, context)
 
     else:
@@ -65,3 +64,9 @@ def editar_producto_view(request, id_prod):
         producto.categoria = categoria
         producto.save()
         return redirect("tabla")
+
+
+def tabla_venta_view(request):
+    template = "tabla_venta.html"
+    ventas = Venta.objects.all()
+    return render(request, template, {"ventas": ventas})
