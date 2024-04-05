@@ -1,0 +1,40 @@
+{% extends "home.html" %} {% block main-section %}
+<div class="flex flex-col gap-2 ">
+  <div class="flex justify-between items-center">
+    <h3>Ventas</h3>
+    <a href="{% url 'agregar producto' %}">
+      <p class="px-3 py-1 outline outline-1 rounded-md ">Añadir Venta</p></a
+    >
+  </div>
+
+  <table class="table-auto outline outline-1">
+    <thead>
+      <tr class="">
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for venta in ventas %}
+
+      <tr class="">
+        <td class="">{{venta.id_producto}}</td>
+        <td class="text-center">{{venta.cantidad}}</td>
+        <td>{{venta.fecha}}</td>
+        <td>{{venta.hora}}</td>
+        <td>
+          <a href=""><p class="ml-2">modificar</p></a>
+        </td>
+        <td>
+          <a href=""><p class="ml-2">eliminar</p></a>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock main-section %}
