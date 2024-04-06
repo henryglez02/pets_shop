@@ -1,34 +1,42 @@
 {% extends "home.html" %} {% block main-section %}
-<div class="flex flex-col gap-2">
+{% load static %}
+<div class="flex flex-col gap-2 w-full mx-10">
   <div class="flex justify-between items-center">
-    <h3>Productos</h3>
+    <h1 class="text-red-800 font-bold">Productos</h1>
     <a href="{% url 'agregar producto' %}">
-      <p class="px-3 py-1 outline outline-1 rounded-md">Añadir Producto</p></a
-    >
+      <p class="px-3 py-1  rounded-md font-bold">Añadir Producto<img class="mx-10" width="30" height="30"
+          src="https://img.icons8.com/ios/50/add--v1.png" alt="Agregar producto" /></p>
+    </a>
+
   </div>
 
-  <table class="table-auto outline outline-1">
+  <table class="border-red-700 table-fixed h-auto">
     <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Categoria</th>
-        <th>Reserva</th>
+      <tr class="bg-red-300 text-black">
+        <th class="border border-red-300">Nombre</th>
+        <th class="border border-red-300">Precio</th>
+        <th class="border border-red-300">Categoria</th>
+        <th class="border border-red-300">Reserva</th>
+        <th class="border border-red-300">Editar</th>
+        <th class="border border-red-300">Eliminar</th>
       </tr>
     </thead>
     <tbody>
       {% for prod in productos %}
 
       <tr>
-        <td>{{prod.nombre}}</td>
-        <td>{{prod.precio}}</td>
-        <td>{{prod.categoria}}</td>
-        <td>{{prod.reserva}}</td>
-        <td>
-          <a href="{% url 'editar' prod.id  %}"><p>modificar</p></a>
+        <td class="border border-red-300 p-2">{{prod.nombre}}</td>
+        <td class="border border-red-300 text-center p-2">{{prod.precio}}</td>
+        <td class="border border-red-300 text-center p-2">{{prod.categoria}}</td>
+        <td class="border border-red-300 text-center p-2">{{prod.reserva}}</td>
+        <td class="border border-red-300 p-2 flex items-center justify-center">
+          <a href="{% url 'editar' prod.id  %}"><img width="35" height="35"
+              src="https://img.icons8.com/external-xnimrodx-lineal-xnimrodx/64/external-manage-export-and-delivery-xnimrodx-lineal-xnimrodx.png"
+              alt="Editar producto" /></a>
         </td>
-        <td>
-          <a href="{% url 'eliminar' prod.id  %}"><p>eliminar</p></a>
+        <td class="border border-red-300 p-2 ">
+          <a href="{% url 'eliminar' prod.id  %}"><img width="30" height="30"
+              src="https://img.icons8.com/ios/50/waste.png" alt="Eliminar Producto" /></a>
         </td>
       </tr>
 
