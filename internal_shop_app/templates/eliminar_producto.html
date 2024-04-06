@@ -1,0 +1,6 @@
+{% block main-section %}
+<h1>seguro de elimianr producto: {{producto.nombre}}</h1>
+<a href="{% url 'eliminar yes' producto.id %}"><p>Confirmar</p></a>
+<a href="{% url 'tabla' %}"><p>Cancelar</p></a>
+
+{% endblock main-section %}

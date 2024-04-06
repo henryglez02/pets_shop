@@ -51,8 +51,15 @@ def editar_producto_view(request, id_prod):
 
 def eliminar_producto_view(request, id_prod):
     producto = Producto.objects.get(pk=id_prod)
+    template = "eliminar_producto.html"
+    context = {"producto": producto}
+    return render(request, template, context)
+
+
+def eliminar_producto_yes_view(request, id_prod):
+    producto = Producto.objects.get(pk=id_prod)
     producto.delete()
-    return render(request, "eliminar.html")
+    return redirect("tabla")
 
 
 def agregar_venta_view(request):
@@ -66,7 +73,14 @@ def agregar_venta_view(request):
         context = {"form": VentaForm()}
         return render(request, template, context)
 
+
 def eliminar_venta_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
+    context={"venta":venta}
+    
+    return render(request, "eliminar_venta.html",context)
+
+def eliminar_venta_yes_view(request, id_venta):
+    venta = Venta.objects.get(pk=id_venta)
     venta.delete()
-    return render(request, "eliminar_venta.html")
+    return redirect("ventas")
