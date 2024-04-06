@@ -1,5 +1,8 @@
 {% block main-section %}
-<h1>Venta Eliminada</h1>
-<a href="{% url 'ventas' %}"><p>Regresar</p></a>
+<h1>seguro de elimianr venta:</h1>
+<p>producto:{{venta.id_producto}}</p>
+<p>cantidad: {{venta.cantidad}}</p>
+<a href="{% url 'eliminar venta yes' venta.id %}"><p>Confirmar</p></a>
+<a href="{% url 'ventas' %}"><p>Cancelar</p></a>
 
 {% endblock main-section %}
