@@ -10,7 +10,7 @@
     <title>Angel Pets</title>
   </head>
   <body class="min-h-screen">
-    <header class="flex flex-col items-center justify-center p-3 shadow-sm sm:shadow-2xl">
+    <header class="flex flex-col items-center justify-center p-3 shadow-md sm:shadow-xl">
       <img
           class="sm:w-32 sm:h-32 w-24 h-24 rounded-full object-cover shadow-xl flex py-3"
           src="{% static 'images/logo.png' %}"
@@ -21,7 +21,7 @@
         <ul class="flex max-w-sm gap-4 justify-center text-xl text-red-800 font-semibold">
           <li class="hover:text-red-600"><a href="{% url 'home' %}">Home</a></li>
           <li class="hover:text-red-600"><a href="{% url 'tabla' %}">Productos</a></li>
-          <li class="hover:text-red-600"><a href="">Ventas</a></li>
+          <li class="hover:text-red-600"><a href="{% url 'ventas' %}">Ventas</a></li>
         </ul>
       </nav>
     </header>
