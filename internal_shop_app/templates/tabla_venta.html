@@ -25,7 +25,9 @@
         <td>{{venta.fecha}}</td>
         <td>{{venta.hora}}</td>
         <td>
-          <a href=""><p class="ml-2">modificar</p></a>
+          <a href="{% url 'editar venta' venta.id  %}"
+            ><p class="ml-2">modificar</p></a
+          >
         </td>
         <td>
           <a href="{% url 'eliminar venta' venta.id  %}"

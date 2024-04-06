@@ -84,3 +84,16 @@ def eliminar_venta_yes_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
     venta.delete()
     return redirect("ventas")
+
+def editar_venta_view(request, id_venta):
+    venta = Venta.objects.get(pk=id_venta)
+    if request.method == "POST":
+        form = VentaForm(request.POST, instance=venta)
+        if form.is_valid():
+            form.save()
+            return redirect("ventas")
+    else:
+        template = "editar_venta.html"
+        context = {"form": VentaForm(instance=venta)}
+        return render(request, template, context)
+
