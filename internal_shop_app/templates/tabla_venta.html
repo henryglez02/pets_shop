@@ -1,9 +1,9 @@
 {% extends "home.html" %} {% block main-section %}
-<div class="flex flex-col gap-2 ">
+<div class="flex flex-col gap-2">
   <div class="flex justify-between items-center">
     <h3>Ventas</h3>
-    <a href="{% url 'agregar producto' %}">
-      <p class="px-3 py-1 outline outline-1 rounded-md ">Añadir Venta</p></a
+    <a href="{% url 'agregar venta' %}">
+      <p class="px-3 py-1 outline outline-1 rounded-md">Añadir Venta</p></a
     >
   </div>
 
@@ -28,7 +28,9 @@
           <a href=""><p class="ml-2">modificar</p></a>
         </td>
         <td>
-          <a href=""><p class="ml-2">eliminar</p></a>
+          <a href="{% url 'eliminar venta' venta.id  %}"
+            ><p class="ml-2">eliminar</p></a
+          >
         </td>
       </tr>
 
