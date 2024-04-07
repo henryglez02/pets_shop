@@ -1,37 +1,15 @@
+
+{% load static %}
+<script src="{% static 'modal.js' %}"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 <button type="button" onclick="openDialog('dialog1', this)">Agregar producto</button>
 
-
-  <div role="dialog" id="dialog1" aria-modal="true" class="hidden">
-    <div class="dialog_form_actions">
-        <button type="button" onclick="replaceDialog('dialog1', undefined, 'dialog1_close_btn')">Guardar</button>
-        <button type="button" onclick="closeDialog(this)">Cerrar</button>
-      </div>
-    </div>  
-    <h2 id="dialog1_label" class="dialog_label">Agregar producto</h2>
-        <label>
-          <span class="label_text">Nombre:</span>
-          <input type="text" class="nombre_input">
-        </label>
-      </div>
-      <div class="dialog_form_item">
-        <label>
-          <span class="label_text">Precio:</span>
-          <input type="text" class="precio_input">
-        </label>
-      </div>
-      <div class="dialog_form_item">
-        <label>
-          <span class="label_text">Categoria:</span>
-          <input type="text" class="categoria_input">
-        </label>
-      </div>
-      <div class="dialog_form_item">
-        <label>
-          <span class="label_text">Zip:</span>
-          <input type="text" class="zip_input">
-        </label>
-        </div>
-    </div>
-
+<div role="dialog" id="dialog1" aria-modal="true" class="hidden box-border border border-red-100 w-66 h-68 shadow-xl">
+ <div class="dialog_form_actions flex justify-between gap-2 my-3">
+   <h2 id="dialog1_label" class="dialog_label text-red-800 font-bold">Agregar producto</h2>
+    <button type="button" onclick="closeDialog(this)"><img width="30" height="30" src="https://img.icons8.com/ios/50/cancel.png" alt="cancel"/></button>
+ </div>
+ <button type="button" onclick="replaceDialog('dialog1', undefined, 'dialog1_close_btn')" class="rounded-xl font-mono bg-red-700 text-white px-3 py-1 my-4">Guardar</button>
+</div>
 
     
