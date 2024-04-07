@@ -1,18 +1,20 @@
 {% extends "home.html" %} {% block main-section %}
-<div class="flex flex-col text-center border border-red-200 p-4 gap-3 shadow-xl my-2">
+<div
+  class="flex flex-col text-center border border-red-200 p-4 gap-3 shadow-xl my-2"
+>
   <div class="flex text-center justify-between gap-2 my-3">
-  <h1 class="text-xl text-red-800 font-bold">Agregar Venta</h1>
-  <button type="button" onclick="closeDialog(this)"><img width="30" height="30" src="https://img.icons8.com/ios/50/cancel.png" alt="cancel"/></button>
-</div>
-  <form
-    method="POST"
-    class="flex flex-col  text-lg gap-2"
-  >
+    <h1 class="text-xl text-red-800 font-bold">Agregar Venta</h1>
+  </div>
+  <form method="POST" class="flex flex-col text-lg gap-2">
     {% csrf_token %} {{form}}
 
-    <button class="py-1 px-4 rounded-md outline outline-1 rounded-xl font-mono bg-red-700 text-white px-3 py-1 my-4">
-      <strong>Guardar</strong>
+    <button
+      class="py-1 px-4 rounded-md outline outline-1 rounded-xl font-semibold bg-red-700 text-white px-3 py-1 my-4"
+    >
+      Guardar
     </button>
+    <a href="{% url 'ventas' %}"><p class="font-semibold">Cancelar</p></a>
+
   </form>
 </div>
 

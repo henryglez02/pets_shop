@@ -1,8 +1,17 @@
-{% block main-section %}
-<h1>seguro de elimianr venta:</h1>
-<p>producto:{{venta.id_producto}}</p>
-<p>cantidad: {{venta.cantidad}}</p>
-<a href="{% url 'eliminar venta yes' venta.id %}"><p>Confirmar</p></a>
-<a href="{% url 'ventas' %}"><p>Cancelar</p></a>
+{% extends "home.html" %} {% block main-section %}
+<div
+  class="flex flex-col text-center items-center border border-red-200 p-4 gap-3 shadow-xl my-2"
+>
+  <h1 class="text-xl text-red-800 font-bold">Eliminar Venta</h1>
+  <p class="text-lg">¿Desea eliminar la venta?</p>
+  <p class="text-lg font-semibold">Producto:{{venta.id_producto}}</p>
+  <p class="text-lg font-semibold">Cantidad: {{venta.cantidad}}</p>
+  <a
+    class="py-1 px-4 rounded-xl outline outline-1 bg-red-700 text-white font-semibold my-4"
+    href="{% url 'eliminar venta yes' venta.id %}"
+    ><p>Confirmar</p></a
+  >
+  <a class="font-semibold" href="{% url 'ventas' %}"><p>Cancelar</p></a>
+</div>
 
 {% endblock main-section %}
