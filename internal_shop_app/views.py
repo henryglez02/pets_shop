@@ -21,6 +21,9 @@ def tabla_view(request):
 def tabla_venta_view(request):
     template = "tabla_venta.html"
     ventas = Venta.objects.order_by("-id")
+    for venta in ventas:
+        venta.calcular_importe()
+        venta.save()
     return render(request, template, {"ventas": ventas})
 
 
@@ -63,8 +66,6 @@ def eliminar_producto_yes_view(request, id_prod):
         return redirect("tabla")
     except Exception as e:
         return render(request, "exceptions.html", {"error": str(e)})
-
-
 
 
 def agregar_venta_view(request):

@@ -21,5 +21,10 @@ class Venta(models.Model):
     fecha = models.DateField(auto_now_add=True)
     hora = models.TimeField(auto_now_add=True)
 
+    def calcular_importe(self):
+        producto = Producto.objects.get(pk=self.id_producto.id)
+        self.importe = producto.precio * self.cantidad
+        self.save()
+
     def __str__(self):
         return f"{self.id_producto} - {self.cantidad}"
