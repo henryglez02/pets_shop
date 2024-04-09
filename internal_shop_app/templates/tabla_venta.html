@@ -18,6 +18,8 @@
       <tr class="bg-red-300 text-black">
         <th class="border border-red-300">Producto</th>
         <th class="border border-red-300">Cantidad</th>
+        <th class="border border-red-300">Importe</th>
+
         <th class="border border-red-300">Fecha</th>
         <th class="border border-red-300">Hora</th>
         <th class="border border-red-300">Editar</th>
@@ -29,13 +31,14 @@
 
       <tr>
         <td class="border border-red-300 p-2">{{venta.id_producto}}</td>
-        <td class="border border-red-300 text-center p-2">
-          {{venta.cantidad}}
-        </td>
+        <td class="border border-red-300 text-center p-2">{{venta.cantidad}}</td>
+        <td class="border border-red-300 text-center p-2">{{venta.importe}}</td>
         <td class="border border-red-300 text-center p-2">{{venta.fecha}}</td>
         <td class="border border-red-300 text-center p-2">{{venta.hora}}</td>
-        <td class="border border-red-300 p-2  ">
-          <a class="flex items-center justify-center " href="{% url 'editar venta' venta.id  %}"
+        <td class="border border-red-300 p-2">
+          <a
+            class="flex items-center justify-center"
+            href="{% url 'editar venta' venta.id  %}"
             ><img
               width="35"
               height="35"
@@ -44,7 +47,9 @@
           /></a>
         </td>
         <td class="border border-red-300 p-2">
-          <a class="flex items-center justify-center " href="{% url 'eliminar venta' venta.id  %}"
+          <a
+            class="flex items-center justify-center"
+            href="{% url 'eliminar venta' venta.id  %}"
             ><img
               width="30"
               height="30"

@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 
 # Create your models here.
@@ -14,8 +15,9 @@ class Producto(models.Model):
 
 
 class Venta(models.Model):
-    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    id_producto = models.ForeignKey(Producto, on_delete=models.RESTRICT)
     cantidad = models.IntegerField(max_length=50)
+    importe = models.FloatField(max_length=50, default=0)
     fecha = models.DateField(auto_now_add=True)
     hora = models.TimeField(auto_now_add=True)
 

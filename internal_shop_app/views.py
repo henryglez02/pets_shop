@@ -14,8 +14,8 @@ def home_view(request):
 def tabla_view(request):
     template = "mostrar_tabla.html"
     productos = Producto.objects.all()
-    tipo = list(productos)
-    return render(request, template, {"productos": productos, "tipo": tipo})
+
+    return render(request, template, {"productos": productos})
 
 
 def tabla_venta_view(request):
@@ -57,9 +57,14 @@ def eliminar_producto_view(request, id_prod):
 
 
 def eliminar_producto_yes_view(request, id_prod):
-    producto = Producto.objects.get(pk=id_prod)
-    producto.delete()
-    return redirect("tabla")
+    try:
+        producto = Producto.objects.get(pk=id_prod)
+        producto.delete()
+        return redirect("tabla")
+    except Exception as e:
+        return render(request, "exceptions.html", {"error": str(e)})
+
+
 
 
 def agregar_venta_view(request):
