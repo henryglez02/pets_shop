@@ -14,13 +14,16 @@ def home_view(request):
 def tabla_view(request):
     template = "mostrar_tabla.html"
     productos = Producto.objects.all()
-    tipo = list(productos)
-    return render(request, template, {"productos": productos, "tipo": tipo})
+
+    return render(request, template, {"productos": productos})
 
 
 def tabla_venta_view(request):
     template = "tabla_venta.html"
-    ventas = Venta.objects.all()
+    ventas = Venta.objects.order_by("-id")
+    for venta in ventas:
+        venta.calcular_importe()
+        venta.save()
     return render(request, template, {"ventas": ventas})
 
 
@@ -57,9 +60,12 @@ def eliminar_producto_view(request, id_prod):
 
 
 def eliminar_producto_yes_view(request, id_prod):
-    producto = Producto.objects.get(pk=id_prod)
-    producto.delete()
-    return redirect("tabla")
+    try:
+        producto = Producto.objects.get(pk=id_prod)
+        producto.delete()
+        return redirect("tabla")
+    except Exception as e:
+        return render(request, "exceptions.html", {"error": str(e)})
 
 
 def agregar_venta_view(request):
@@ -76,14 +82,16 @@ def agregar_venta_view(request):
 
 def eliminar_venta_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
-    context={"venta":venta}
-    
-    return render(request, "eliminar_venta.html",context)
+    context = {"venta": venta}
+
+    return render(request, "eliminar_venta.html", context)
+
 
 def eliminar_venta_yes_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
     venta.delete()
     return redirect("ventas")
+
 
 def editar_venta_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
@@ -96,4 +104,3 @@ def editar_venta_view(request, id_venta):
         template = "editar_venta.html"
         context = {"form": VentaForm(instance=venta)}
         return render(request, template, context)
-

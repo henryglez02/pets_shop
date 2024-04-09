@@ -14,10 +14,16 @@ class Producto(models.Model):
 
 
 class Venta(models.Model):
-    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    id_producto = models.ForeignKey(Producto, on_delete=models.RESTRICT)
     cantidad = models.IntegerField(max_length=50)
+    importe = models.FloatField(max_length=50, default=0)
     fecha = models.DateField(auto_now_add=True)
     hora = models.TimeField(auto_now_add=True)
+
+    def calcular_importe(self):
+        producto = Producto.objects.get(pk=self.id_producto.id)
+        self.importe = producto.precio * self.cantidad
+        self.save()
 
     def __str__(self):
         return f"{self.id_producto} - {self.cantidad}"
