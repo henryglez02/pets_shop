@@ -20,7 +20,7 @@ def tabla_view(request):
 
 def tabla_venta_view(request):
     template = "tabla_venta.html"
-    ventas = Venta.objects.all()
+    ventas = Venta.objects.order_by("-id")
     return render(request, template, {"ventas": ventas})
 
 
@@ -76,14 +76,16 @@ def agregar_venta_view(request):
 
 def eliminar_venta_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
-    context={"venta":venta}
-    
-    return render(request, "eliminar_venta.html",context)
+    context = {"venta": venta}
+
+    return render(request, "eliminar_venta.html", context)
+
 
 def eliminar_venta_yes_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
     venta.delete()
     return redirect("ventas")
+
 
 def editar_venta_view(request, id_venta):
     venta = Venta.objects.get(pk=id_venta)
@@ -96,4 +98,3 @@ def editar_venta_view(request, id_venta):
         template = "editar_venta.html"
         context = {"form": VentaForm(instance=venta)}
         return render(request, template, context)
-
