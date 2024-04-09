@@ -1,11 +1,11 @@
 {% extends "home.html" %} {% block main-section %}
 <div
-  class="flex flex-col text-center items-center border border-red-200 p-4 gap-3 shadow-xl my-2"
+  class="flex flex-col text-center border border-red-200 p-4 gap-3 shadow-xl my-2"
 >
   <h1 class="text-xl text-red-800 font-bold">Eliminar Producto</h1>
   <p class="text-lg">¿Desea eliminar el producto: {{producto.nombre}}?</p>
   <a
-    class="py-1 px-4 rounded-xl outline outline-1 bg-red-700 text-white font-semibold my-4"
+    class="px-4 rounded-md outline outline-1 rounded-xl bg-red-700 text-white py-1 my-4 font-semibold"
     href="{% url 'eliminar yes' producto.id %}"
     ><p>Confirmar</p></a
   >
