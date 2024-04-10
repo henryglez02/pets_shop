@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from internal_shop_app.forms import CrearProducto, VentaForm
+from internal_shop_app.forms import ProductoForm, VentaForm
 from internal_shop_app.models import Producto, Venta
 
 # Create your views here.
@@ -29,26 +29,26 @@ def tabla_venta_view(request):
 
 def agregar_producto_view(request):
     if request.method == "POST":
-        form = CrearProducto(request.POST)
+        form = ProductoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("tabla")
     else:
         template = "agregar_producto.html"
-        context = {"form": CrearProducto()}
+        context = {"form": ProductoForm()}
         return render(request, template, context)
 
 
 def editar_producto_view(request, id_prod):
     producto = Producto.objects.get(pk=id_prod)
     if request.method == "POST":
-        form = CrearProducto(request.POST, instance=producto)
+        form = ProductoForm(request.POST, instance=producto)
         if form.is_valid():
             form.save()
             return redirect("tabla")
     else:
         template = "editar_producto.html"
-        context = {"form": CrearProducto(instance=producto)}
+        context = {"form": ProductoForm(instance=producto)}
         return render(request, template, context)
 
 
